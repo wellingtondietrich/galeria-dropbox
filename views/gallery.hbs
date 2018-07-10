@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>                       
+      <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+      <script type='text/javascript' src='/javascripts/page.js'></script>
+      <link rel="stylesheet" href="/stylesheets/page.css">
+      <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+      <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+      
+
+</head>
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle navbar-toggle-sidebar collapsed">
+      MENU
+      </button>
+      <a class="navbar-brand" href="#">
+        SegLab
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">      
+      <form class="navbar-form navbar-left" method="GET" role="search">
+      </form>
+      </div>
+    </div>
+  </nav>    
+  <div class="container-fluid main-container">
+      <div class="col-md-2 sidebar">
+        <div class="row">
+  <div class="absolute-wrapper"> </div>
+  <div class="side-menu">
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="side-menu-container">
+        <ul class="nav navbar-nav">
+          <li id="linkGaleria" class="active"><a href="#" onclick="gallery();"><span class="glyphicon glyphicon-picture"></span> Galeria</a></li>
+          <li id="linkUpload"><a href="#" onclick="upload();"><span class="glyphicon glyphicon-cloud-upload"></span> Upload</a></li>
+          <li id="linkPerfil"><a href="#" onclick="perfil();"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
+        </ul>
+      </div>
+    </nav>
+
+  </div>
+</div>      
+</div>
+      <div id="painelPrincipal" class="col-md-10 content">
+          <div class="panel panel-default">
+  <div class="panel-heading">
+    Dashboard
+  </div>
+  <div class="panel-body">
+    <nav id="menu">
+      <div class="galleria">
+        <ul>
+        {{#each imgs}}
+            <li>
+            <img src="{{this}}" width="390" height="245">
+            </li>
+        {{/each}}
+        </ul>
+      </div>
+  </div>
+</div>
+      </div>
+      <footer class="pull-left footer">
+        <p class="col-md-12">
+          <hr class="divider">
+          Wellington da Silva Castanha
+        </p>
+      </footer>
+    </div>
+</html>
+
+<script>
+
+function gallery() {
+  document.getElementById("linkUpload").className = document.getElementById("linkUpload").className.replace(/\bactive\b/,'');
+  document.getElementById("linkPerfil").className = document.getElementById("linkPerfil").className.replace(/\bactive\b/,'');
+
+  var element = document.getElementById("linkGaleria");
+  element.classList.add("active");
+
+  document.getElementById("painelPrincipal").innerHTML = "<div class='panel panel-default'><div class='panel-heading'>Galeria</div><div class='panel-body'>    <nav id='menu'><div class='galleria'><ul>{{#each imgs}}<li><img src='{{this}}'' width='390' height='245'></li>{{/each}}</ul></div></div></div>";
+
+}
+
+function upload() {
+  document.getElementById("linkGaleria").className = document.getElementById("linkGaleria").className.replace(/\bactive\b/,'');
+  document.getElementById("linkPerfil").className = document.getElementById("linkPerfil").className.replace(/\bactive\b/,'');
+
+  var element = document.getElementById("linkUpload");
+  element.classList.add("active");
+
+  document.getElementById("painelPrincipal").innerHTML = "<div class='panel panel-default'><div class='panel-heading'>Upload</div><article id='main-content' role='main'><section class='container'><div class='row'><div class='col-md-8'><h3 class='text-info'>Adicionar imagens na galeria.</h3><p><strong>Note:</strong> Todas as imagens seleciondas serão adicionadas automaticamente na galeria.</p><div class='box'><div class='row'><div class='col-sm-10'><span class='control-fileupload'><label for='file1' class='text-left'>Selecione as imagens do seu computador.</label<input type='file' id='file1'></span></div<div class='col-sm-2'><input type='file' name='file' id='file' onchange='doUpload(event)'></div </div></div><hr><br /><br /><hr</div></div></section></article></div>";
+}
+
+function perfil() {
+  document.getElementById("linkGaleria").className = document.getElementById("linkGaleria").className.replace(/\bactive\b/,'');
+  document.getElementById("linkUpload").className = document.getElementById("linkUpload").className.replace(/\bactive\b/,'');
+
+  var element = document.getElementById("linkPerfil");
+  element.classList.add("active");
+
+  document.getElementById("painelPrincipal").innerHTML = "<div class='panel panel-default'><div class='panel-heading'>Perfil</div><div class='panel-body'><div class='row'><div class='col-md-3 col-lg-3 ' align='center'><img alt='User Pic' src='https://scontent.ffln1-1.fna.fbcdn.net/v/t1.0-9/19399730_1336300729811026_6200333949688054795_n.jpg?_nc_cat=0&oh=21410645b593853658cf80e1c3a7b59a&oe=5BA5A83F' class='img-circle img-responsive'> </div><div class=' col-md-9 col-lg-9 '><table class='table table-user-information'><tbody><tr><td>Nome:</td><td>Wellington da Silva Castanha</td></tr><tr><td>Email:</td><td><a href='mailto:wellintyon@hotmail.com'>wellintyon@hotmail.com</a></td></tr><tr><td>Telefone:</td><td>(48) 996197900</td></tr></tbody></table></div></div></div>";
+}
+
+</script>
